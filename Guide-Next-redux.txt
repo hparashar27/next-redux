@@ -1,0 +1,23 @@
+https://codevoweb.com/setup-redux-toolkit-in-nextjs-13-app-directory/  visit
+
+src/redux/store.ts
+
+import { configureStore } from "@reduxjs/toolkit";
+export const store = configureStore({
+  reducer: {},
+  devTools: process.env.NODE_ENV !== "production",
+});
+export type RootState = ReturnType<typeof store.getState>;
+export type AppDispatch = typeof store.dispatch;
+
+In the above code snippet, we utilized the configureStore function from the Redux Toolkit library to create a new instance of the Redux store. This function allows us to specify options and default middleware for the store. Here, we created an empty store with no middleware or reducers.
+We also exported the store instance from the file so that other parts of the application could access it.
+Finally, we extracted the RootState and Dispatch types from the store instance at the bottom of the file. By inferring these types from the store, we ensure that they stay up to date as we add new state slices or make changes to middleware settings.
+
+Instead of importing the RootState and AppDispatch types into each component, it’s recommended to create typed versions of the useDispatch and useSelector hooks. This helps avoid potential circular import dependency issues and makes it easier to use these hooks across your application
+
+src/redux/provider.tsx
+
+In earlier versions of Next.js, we would typically wrap the Redux provider around the main entry point of the application. However, with Next.js 13, every component is now a server-side component. This means we need to create a custom provider component that lives on the client-side and wrap it around the children nodes.
+
+To create this custom provider component, we’ll create a new file named provider.tsx within the “redux” directory. We’ll use the "use client" flag at the top of the file to indicate that the provider component should live on the client-side. Once you’ve created the file, add the following code to it.

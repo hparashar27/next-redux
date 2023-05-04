@@ -21,3 +21,7 @@ src/redux/provider.tsx
 In earlier versions of Next.js, we would typically wrap the Redux provider around the main entry point of the application. However, with Next.js 13, every component is now a server-side component. This means we need to create a custom provider component that lives on the client-side and wrap it around the children nodes.
 
 To create this custom provider component, we’ll create a new file named provider.tsx within the “redux” directory. We’ll use the "use client" flag at the top of the file to indicate that the provider component should live on the client-side. Once you’ve created the file, add the following code to it.
+
+// Redux Toolkit query ->
+To see how RTK Query works, let's walk through a basic usage example. For this example, we'll assume you're using React and want to make use of RTK Query's auto-generated React hooks
+With RTK Query, you usually define your entire API definition in one place. This is most likely different from what you see with other libraries such as swr or react-query, and there are several reasons for that. Our perspective is that it's much easier to keep track of how requests, cache invalidation, and general app configuration behave when they're all in one central location in comparison to having X number of custom hooks in different files throughout your application.
